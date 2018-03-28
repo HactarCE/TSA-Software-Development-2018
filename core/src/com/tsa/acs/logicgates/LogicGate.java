@@ -10,9 +10,10 @@ public class LogicGate {
 	public Texture icon;
 	public Rectangle rect;
 	public Vector2 position;
-
+	public boolean isHeld;
+	
 	String path;
-	boolean isHeld;
+	
 
 	public LogicGate() {
 		position = new Vector2(0, 0);
@@ -20,12 +21,10 @@ public class LogicGate {
 
 	public void create() {
 		icon = new Texture(path);
-		rect = new Rectangle(0, 0, 64, 64);
+		rect = new Rectangle(1000, 1000, 64, 64);
 	}
 
 	public void render(SpriteBatch batch, Rectangle mouse) {
-		if (mouse.overlaps(rect) && Gdx.input.isButtonPressed(Buttons.LEFT))
-			isHeld = true;
 		if (isHeld) {
 			position = new Vector2(mouse.x, mouse.y);
 			if (!Gdx.input.isButtonPressed(Buttons.LEFT))

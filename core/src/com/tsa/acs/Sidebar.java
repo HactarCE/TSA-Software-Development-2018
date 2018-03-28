@@ -32,7 +32,7 @@ public class Sidebar {
 			batch.draw(logicgates.get(i).icon, 10, i * 74);
 			if (mouse.overlaps(boundingBoxes.get(i))) {
 				batch.draw(overlayTexture, 10, i * 74);
-				if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
+				if (Gdx.input.justTouched()) {
 					try {
 						sim.gates.add(logicgates.get(i).getClass().newInstance());
 						sim.gates.get(sim.gates.size() - 1).create();
