@@ -11,9 +11,9 @@ public class LogicGate {
 	public Rectangle rect;
 	public Vector2 position;
 	public boolean isHeld;
-	
+
 	String path;
-	
+
 
 	public LogicGate() {
 		position = new Vector2(0, 0);
@@ -26,7 +26,11 @@ public class LogicGate {
 
 	public void render(SpriteBatch batch, Rectangle mouse) {
 		if (isHeld) {
-			position = new Vector2(mouse.x, mouse.y);
+			if (mouse.x > 74)
+				position = new Vector2(mouse.x, mouse.y);
+			else
+				isHeld = false;
+
 			if (!Gdx.input.isButtonPressed(Buttons.LEFT))
 				isHeld = false;
 		}

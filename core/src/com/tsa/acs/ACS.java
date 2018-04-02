@@ -10,6 +10,8 @@ import com.badlogic.gdx.math.*;
 
 public class ACS extends ApplicationAdapter {
 	SpriteBatch batch;
+	ShapeRenderer sr;
+	
 	Sidebar sidebar;
 	Simulation sim;
 	Rectangle mouse = new Rectangle(0, 0, 4, 4);
@@ -17,6 +19,7 @@ public class ACS extends ApplicationAdapter {
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
+		sr = new ShapeRenderer();
 		sidebar = new Sidebar();
 		sidebar.create();
 		sim = new Simulation();
@@ -26,21 +29,26 @@ public class ACS extends ApplicationAdapter {
 	@Override
 	public void render() {
 		mouse.setPosition(Gdx.input.getX(), 720 - Gdx.input.getY());
-
+		
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		sidebar.render(batch, sim, mouse);
-		sim.render(batch, mouse);
-		batch.end();
-
-		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeType.Line);
+		
+		sidebar.render(batch, sim, mouse);
+		sim.render(batch, mouse, sr);
+		
 		sr.setColor(Color.BLACK);
 		sr.line(80, 0, 80, 720);
 		sr.line(81, 0, 81, 720);
 		sr.line(82, 0, 82, 720);
+		
+		batch.end();
 		sr.end();
+	
+		
+
+
 	}
 
 	@Override

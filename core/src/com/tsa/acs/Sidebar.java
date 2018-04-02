@@ -2,7 +2,6 @@ package com.tsa.acs;
 
 import java.util.*;
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.Input.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.*;
